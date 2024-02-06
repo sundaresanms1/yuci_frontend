@@ -108,7 +108,7 @@ export default function App() {
 
                   <img
                     src="./images/logo white.png"
-                    className="w-28"
+                    className="w-20 ml-2"
                     alt="Logo"
                   />
                   <div
@@ -131,12 +131,12 @@ export default function App() {
             </div>
         
           <Routes>
-          
+          <Route path="/" element={<Navigate to="/callList" />} />
 
             <Route path="/dashboard" element={<DashBoard  theme={theme}  themeMode={themeMode} />} />
 
             <Route
-              path="/search"
+              path="/callList"
               element={<SearchBar theme={theme}  themeMode={themeMode} activeMenuItemSide={activeMenuItemSide} onMenuItemClick={setActiveMenuItem} onMenuItemClickSide={setActiveMenuItemSide} />}
             />
 

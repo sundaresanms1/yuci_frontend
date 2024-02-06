@@ -1,61 +1,123 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactWaves from "@dschoon/react-waves";
-import track7 from "../tracks/track7.mp3";
-import track2 from "../tracks/track2.mp3";
+
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 import { Typography } from "@mui/material";
 import { useSubtitle } from "../ContextFilter/Subtitlecontext";
 
-const MusicList = () => {
-    const { subtitle, setSubtitle } = useSubtitle();
-  const initialTracks = [
-    { source: track7, title: "Zimt" },
-    { source: track2, title: "Ingwer" }
-  ];
+const MusicList = ({fileName}) => {
+  const [subtitle, setSubtitle] = useState();
+  const audioSources = {
+    "20230310-184211_9998554943-all.mp3": require("../tracks/20230310-184211_9998554943-all.mp3"),
+    "20230512-092017_9591190893-all.mp3": require("../tracks/20230512-092017_9591190893-all.mp3"),
+    "20230310-184211_9998554944.mp3": require("../tracks/20230310-184211_9998554944.mp3")
+    // Add more filename-source pairs as needed
+  };
+  
 
-  const [playing, setPlaying] = useState(false);
-  const [track, setTrack] = useState(initialTracks[0]);
+
+    const [playing, setPlaying] = useState(false);
+    const [audioSrc, setAudioSrc] = useState(null);
+  
+ 
+  
+    useEffect(() => {
+      // Update the audio source based on the fileName
+      if (fileName) {
+        setAudioSrc(audioSources[fileName]);
+      }
+    }, [fileName]);
   
 
   const audioRef = useRef(null);
   const speechRecognition = useRef(null);
 
+
   useEffect(() => {
     // Initialize SpeechRecognition
-    speechRecognition.current = new window.webkitSpeechRecognition(); // Chrome specific
-    speechRecognition.current.lang = 'en-US'; // Set language
-    speechRecognition.current.continuous = true; // Keep listening
-    speechRecognition.current.interimResults = true; // Get interim results
-
-    // Speech recognition event listeners
-    speechRecognition.current.addEventListener('result', event => {
-      const transcript = Array.from(event.results)
-        .map(result => result[0].transcript)
-        .join('');
-        setSubtitle(transcript)
-      console.log('Transcript:', transcript);
-    });
-    speechRecognition.current.addEventListener('end', () => {
-      if (playing) {
-        speechRecognition.current.start(); // Restart recognition if still playing
-      }
-    });
-
+    if (window.webkitSpeechRecognition && !speechRecognition.current) {
+      // Create SpeechRecognition instance
+      speechRecognition.current = new window.webkitSpeechRecognition();
+      speechRecognition.current.lang = 'en-US'; // Set language
+      speechRecognition.current.continuous = true; // Keep listening
+      speechRecognition.current.interimResults = true; // Get interim results
+  
+      // Speech recognition event listeners
+      speechRecognition.current.addEventListener('result', event => {
+        const transcript = Array.from(event.results)
+          .map(result => result[0].transcript)
+          .join('');
+        setSubtitle(transcript);
+        console.log('Transcript:', transcript);
+      });
+  
+      speechRecognition.current.addEventListener('end', () => {
+        if (playing) {
+          speechRecognition.current.start(); // Restart recognition if still playing
+        }
+      });
+  
+      // Start or resume AudioContext after a user gesture
+      const resumeAudioContext = () => {
+        if (window.webkitAudioContext && window.webkitAudioContext.state === 'suspended') {
+          const resumeAudio = () => {
+            audioRef.current.play().then(() => {
+              if (audioRef.current.paused) {
+                // Request user gesture to resume AudioContext
+                document.removeEventListener('click', resumeAudio);
+                document.removeEventListener('keydown', resumeAudio);
+                document.removeEventListener('touchstart', resumeAudio);
+                document.removeEventListener('touchend', resumeAudio);
+                document.removeEventListener('scroll', resumeAudio);
+                document.removeEventListener('wheel', resumeAudio);
+                document.removeEventListener('mousedown', resumeAudio);
+                document.removeEventListener('mouseup', resumeAudio);
+                document.removeEventListener('mousemove', resumeAudio);
+              }
+            });
+          };
+  
+          // Add event listeners for user gesture
+          document.addEventListener('click', resumeAudio);
+          document.addEventListener('keydown', resumeAudio);
+          document.addEventListener('touchstart', resumeAudio);
+          document.addEventListener('touchend', resumeAudio);
+          document.addEventListener('scroll', resumeAudio);
+          document.addEventListener('wheel', resumeAudio);
+          document.addEventListener('mousedown', resumeAudio);
+          document.addEventListener('mouseup', resumeAudio);
+          document.addEventListener('mousemove', resumeAudio);
+  
+          // Attempt to resume AudioContext
+          window.webkitAudioContext.resume();
+        }
+      };
+  
+      resumeAudioContext();
+    }
+  
     return () => {
       if (speechRecognition.current) {
         speechRecognition.current.stop();
       }
     };
-  }, [playing]);
+  }, [playing, setSubtitle]);
+  
 
   const togglePlay = () => {
     setPlaying(!playing);
 
     // Start or stop speech recognition
     if (!playing) {
-      speechRecognition.current.start();
+      // Start recognition only if user interaction
+      if (audioRef.current) {
+        audioRef.current.play();
+      } else {
+        speechRecognition.current.start();
+      }
     } else {
+      // Stop recognition
       speechRecognition.current.stop();
     }
   };
@@ -65,7 +127,8 @@ const MusicList = () => {
       
 
       <ReactWaves
-        audioFile={track.source} // maps the audio to the element
+      
+        audioFile={audioSrc} // maps the audio to the element
         className={"react-waves"}
         options={{
           backend: "MediaElement", // maps the waveform to an audio element

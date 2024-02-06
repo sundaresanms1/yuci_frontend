@@ -1,0 +1,21 @@
+timestamp	speaker	text_english	harshness_pred	abuse_pred	topics	agent_scoring_parameters
+0:00:16	customer	Hello,	Not Harsh	none	Greetings	none
+0:00:19	agent	Hello,	Not Harsh	none	Greetings	none
+0:00:21	customer	Hello,	Not Harsh	none	Greetings	none
+0:00:22	agent	hello sir, good morning manoj kumar sir	Not Harsh	none	Greetings	[greetings, reaching_rpc]
+0:00:26	customer	yes good morning	Not Harsh	none	Greetings	none
+0:00:28	agent	Sir I am calling from Manali on behalf of icici bank, recording is being done sir, I have made a call regarding your personal being. last four digit number is four three five eight total amount forty nine thousand one hundred eighty seven rupees hua payment aapki one installment	Not Harsh	none	Payment related discussion	[company_introduction, purpose_of_call]
+0:00:46	customer	Will happen.	Not Harsh	none	None	none
+0:00:50	agent	Sir, when did you say five days? It was said on the 9th, it was said on the 8th sir five days, on the 8th sir eight, for today's date twelve	Not Harsh	none	Purpose of call	none
+0:01:06	customer	okay	Not Harsh	none	None	none
+0:01:06	agent	Means tomorrow chako tomorrow till saturday that	Not Harsh	none	Purpose of call	none
+0:01:09	customer	Yes it will be before two.	Not Harsh	none	None	none
+0:01:12	agent	sorry	Not Harsh	none	Purpose of call	none
+0:01:14	customer	Will complete in three to four days.	Not Harsh	none	Purpose of call	none
+0:01:18	agent	sir why? But three to four days means I will call you anytime sir. sir	Not Harsh	none	Purpose of call	none
+0:01:25	customer	He will do this quickly.	Not Harsh	none	Purpose of call	none
+0:01:31	agent	How long will you be late now and sir charges are also being levied, aren't they? There are late penalty charges. There are bouncing charges. do you like it Sir, you have taken a loan of two lakh to the bank to give extra money and are giving three to four lakh rupees.	Not Harsh	none	Payment related discussion	[cibil_info]
+0:01:50	customer	So	Not Harsh	none	None	none
+0:01:51	agent	Do you have benefits? that loan	Not Harsh	none	Payment related discussion	none
+0:01:55	customer	Yes	Not Harsh	none	None	none
+0:01:58	agent	In today's date, try atleast to make one installment payment in today's date, it will happen again and again after five days, after five days, don't say that sir is fine, try hundred and one percent in today's date and pay sir	Not Harsh	none	Payment related discussion	none

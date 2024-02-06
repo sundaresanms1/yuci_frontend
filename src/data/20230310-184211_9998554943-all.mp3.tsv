@@ -1,0 +1,32 @@
+timestamp	speaker	text_english	harshness_pred	abuse_pred	topics	agent_scoring_parameters
+0:00:02	agent	hi good evening sir	Not Harsh	none	None	[greetings]
+0:00:06	customer	yes good evening	Not Harsh	none	Greetings	none
+0:00:09	agent	sir	Not Harsh	none	None	none
+0:00:11	customer	say hello hello	Not Harsh	none	Greetings	none
+0:00:18	agent	Talking to Nazir Akbar Hussain	Not Harsh	none	None	[reaching_rpc]
+0:00:21	customer	Yes	Not Harsh	none	None	none
+0:00:22	agent	sir am talking suzy on behalf of axis bank this call is being recorded for quality and training purpose sir what happened to personal and recording calling sir can i know your total outstanding amount is not paid sir	Not Harsh	none	Payment related discussion	[company_introduction, purpose_of_call, reason_for_delay]
+0:00:32	customer	Yes, I had told that it was made for madam, I had called, before that the call came.	Not Harsh	none	Purpose of call	none
+0:00:40	agent	What happened sir, how are you doing the payment? how do you want to close the account	Not Harsh	none	Payment related discussion	[reason_for_delay]
+0:00:46	customer	Hey, I will do it sir, I am getting this operation done a little, I have a heart problem.	Not Harsh	none	Purpose of call	none
+0:00:51	agent	have heart problem	Not Harsh	none	None	none
+0:00:52	customer	That's why yes that's why I am doing bypass surgery sir	Not Harsh	none	Purpose of call	none
+0:00:56	agent	See sir, this is the year of the bank	Not Harsh	none	Payment related discussion	none
+0:01:00	customer	listen to me listen to me	Not Harsh	none	Purpose of call	none
+0:01:02	agent	Yes	Not Harsh	none	None	none
+0:01:02	customer	I will give you five, but give me a little, won't you?	Not Harsh	none	Payment related discussion	none
+0:01:07	agent	See sir your total standing amount is one lakh seven thousand seven hundred rupees sir if you don't make this payment sir then this account will become legal then you will have problem sir	Not Harsh	none	Payment related discussion	[purpose_of_call]
+0:01:23	customer	I told in medical, so I am in medical.	Not Harsh	none	Purpose of call	none
+0:01:27	agent	Yes	Not Harsh	none	None	none
+0:01:28	customer	Take me I am in medical said I told you no so I will send the documents to you	Not Harsh	none	Purpose of call	none
+0:01:34	agent	no sir documents	Not Harsh	none	Purpose of call	none
+0:01:35	customer	you two of mine	Not Harsh	none	None	none
+0:01:39	agent	okay sir, when can I understand this? Sir but when did this happen, when did you become unwell	Not Harsh	none	Purpose of call	none
+0:01:48	customer	It was in September. happened before	Not Harsh	none	Purpose of call	none
+0:01:52	agent	so you're fine	Not Harsh	none	None	none
+0:01:53	customer	Yes, everything has to be done lightly, isn't it? ok have to do operation	Not Harsh	none	None	none
+0:01:59	agent	yes his	Not Harsh	none	None	none
+0:01:59	customer	There is no scene for that either. I collect a little bit of money, that's why he asks for a tam from madam, I will send it to you. saying so	Not Harsh	none	Payment related discussion	none
+0:02:14	agent	phone	Not Harsh	none	Purpose of call	none
+0:02:14	customer	of hello thank you sir	Not Harsh	none	Thanks	none
+0:02:20	agent	Okay sir okay thank you sir.	Not Harsh	none	Thanks	[thanking]

@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Drawer, List, ListItem, ListItemText, ClickAwayListener } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useIsLargeScreen } from '../Theme/MediaQuery';
 
-const Sidebar = ({ activeMenuItem, onMenuItemClick }) => {
+const Sidebar = ({ onMenuItemClick,activeMenuItem }) => {
   const menuItems = [
     { image: activeMenuItem === 'Dashboard' ? './Images/community.png' : './Images/communitynotactive.png', label: 'Dashboard', link: '/dashboard' },
-    { image: activeMenuItem === 'Call history' ? './Images/searchactive.png' : './Images/search.png', label: 'Call history', link: '/search' },
+    { image: activeMenuItem === 'Call history' ? './Images/searchactive.png' : './Images/search.png', label: 'Call history', link: '/callList' },
     { image: './Images/settings.png', label: 'Settings', link: '/Setting' },
-    { image: activeMenuItem === 'Ideas' ? './Images/searchactive.png' : './Images/tower.png', label: 'ideas', link: '/search' },
+    { image: activeMenuItem === 'Ideas' ? './Images/searchactive.png' : './Images/tower.png', label: 'ideas', link: '/ideas' },
   ];
 
   const [isDrawerOpen, setDrawerOpen] = useState(true);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const activeItem = menuItems.find(item => item.link === pathname);
+    if (activeItem) {
+      onMenuItemClick(activeItem.label);
+    }
+  }, [pathname, menuItems, onMenuItemClick]);
 
   const handleToggleDrawer = () => {
     setDrawerOpen(!isDrawerOpen);

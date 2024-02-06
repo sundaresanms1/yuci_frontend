@@ -13,7 +13,7 @@ const CenteredContent = styled(Grid)(({ theme }) => ({
 export default function DashBoard({theme,themeMode}) {
   const navigate = useNavigate();
     const RunHistory =()=>{
-        navigate('/search')
+        navigate('/callList')
         }
   return (
     <CenteredContent container>

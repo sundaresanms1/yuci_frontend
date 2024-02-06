@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Card,
   CardContent,
@@ -19,9 +19,13 @@ import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import PhoneIcon from '@mui/icons-material/Phone';
 import { AcUnitRounded, Brightness4, Brightness7 } from '@mui/icons-material';
+import { useSubtitle } from '../ContextFilter/Subtitlecontext';
 
 export default function SettingsTab({ themeMode, toggleThemeMode, theme }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+useEffect(() => {
+console.log(rowData + 'be')
+}, [])
 
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -35,7 +39,7 @@ export default function SettingsTab({ themeMode, toggleThemeMode, theme }) {
   const handleCloseMenu = () => {
     setAnchorEl(null);
   };
-
+const {rowData} =useSubtitle()
   const InfoField = ({ icon, label, textInputProps }) => {
     return (
       <Grid container spacing={2} alignItems="center" mt={2}>
@@ -97,9 +101,11 @@ export default function SettingsTab({ themeMode, toggleThemeMode, theme }) {
 
       <Card elevation={0} sx={{ borderRadius: 3,marginTop:3 }}>
         <CardContent>
+        {rowData && (
           <Typography variant="h6" gutterBottom>
-            My Details
+            My Details {rowData.customerName.charAt(0)}
           </Typography>
+        )}
           <Divider sx={{ my: 2 }} />
           <InfoField label={'Name'} icon={<AccountCircleIcon />} />
           <InfoField label={'Employee ID'} icon={<WorkOutlineIcon />} />

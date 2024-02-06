@@ -1,0 +1,13 @@
+timestamp	speaker	text_english	harshness_pred	abuse_pred	topics	agent_scoring_parameters
+0:00:00	agent	so muslims are like this	Harsh	none	None	none
+0:00:07	customer	yes hello	Not Harsh	none	Greetings	none
+0:00:11	agent	Yes, I wanted to talk to you, I called again for this.	Not Harsh	none	Purpose of call	[purpose_of_call]
+0:00:19	customer	So	Not Harsh	none	None	none
+0:00:20	agent	No no no no no no no no what you are telling me today's date pay payment of five hundred rupees	Not Harsh	none	Payment related discussion	none
+0:00:27	customer	do it	Not Harsh	none	Purpose of call	none
+0:00:29	agent	There is money to eat, beg, my payment is by begging	Harsh	none	Payment related discussion	none
+0:00:35	customer	Do	Not Harsh	none	Purpose of call	none
+0:00:38	agent	Uproot what you want, but by paying me for it	Harsh	none	Payment related discussion	none
+0:00:42	customer	Two.	Not Harsh	none	None	none
+0:00:44	agent	this customer is talking	Not Harsh	none	Purpose of call	none
+0:00:46	customer	that hello hello	Not Harsh	none	Greetings	none

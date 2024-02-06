@@ -1,9 +1,9 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Select, MenuItem, IconButton, Grid } from '@mui/material';
+import { AppBar, Toolbar, Typography, Select, MenuItem, IconButton, Grid, TextField, InputAdornment } from '@mui/material';
 import { useMediaQuery } from '@mui/material';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
-
-const Header = ({ activeMenuItem, category, setCategory, year, setYear, updateSelectedYear, openFilterModal, categories, years,values }) => {
+const Header = ({textInputProps, activeMenuItem, category, setCategory, year, setYear, updateSelectedYear, openFilterModal, categories, years,values }) => {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
   return (
@@ -18,7 +18,33 @@ const Header = ({ activeMenuItem, category, setCategory, year, setYear, updateSe
             Empowering Customer Service Excellence
             </p>
           </Grid>
+          {/* <Grid item md={3} xs={12} sx={{marginTop:{xs:4}}} sm={6}>
+          <TextField
+  variant="outlined"
+  placeholder="Search"
+  InputProps={{
+    sx: {
+      
+      color: '#ffffff', // Text color
+      borderColor: '#2E384A',
+      borderRadius: 4,
+      backgroundColor: '#2E384A',
+    },
+    startAdornment: (
+      <InputAdornment position="start">
+        <SearchRoundedIcon style={{ color: '#ffffff' }} /> 
+      </InputAdornment>
+    ),
+  }}
+  InputLabelProps={{
+    sx: {
+      color: '#ffffff',
+    },
+  }}
+/>
+
           
+        </Grid> */}
          
             
         </Grid>
